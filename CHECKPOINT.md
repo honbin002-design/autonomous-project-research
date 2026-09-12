@@ -22,7 +22,9 @@
 | Step 2 | 實現核心研究執行腳本 `src/research_runner.py` | Completed | 2026-09-12 | 自動執行完成 |
 | Step 3 | 建立測試集 `tests/test_research_runner.py` | Completed | 2026-09-12 | 自動執行完成 |
 | Step 4 | 執行 Step 1 Checkpoint 研究任務並記錄日誌 | Completed | 2026-09-12 | 自動執行完成 |
-| Step 5 | 疊代下一階段研究主題 (評估自主策略生成機制) | Pending | - | 依據 Checkpoint 自動演進 |
+| Step 5 | 疊代下一階段研究主題 (評估自主策略生成機制) | Completed | 2026-09-12 | 自動執行完成 |
+| Step 6 | 實作自主策略生成模組 `src/strategy_generator.py` 與自動化演進機制 | Completed | 2026-09-12 | 自動執行完成 |
+| Step 7 | 評估與優化自主策略生成器之長程對齊與錯誤回饋機制 | Pending | - | 由自主策略生成器自動產生 |
 
 ---
 
@@ -40,8 +42,14 @@
 ### [2026-09-12] Step 4 執行完畢
 - 成功執行研究步驟 '執行 Step 1 Checkpoint 研究任務並記錄日誌'，詳細紀錄參見 `research_logs/research_step_4_20260912_134219.log`。
 
+### [2026-09-12] Step 5 執行完畢
+- 成功執行研究步驟 '疊代下一階段研究主題 (評估自主策略生成機制)'，詳細紀錄參見 `research_logs/research_step_5_20260912_140109.log`。
+
+### [2026-09-12] Step 6 執行完畢
+- 成功執行研究步驟 '實作自主策略生成模組 `src/strategy_generator.py` 與自動化演進機制'，詳細紀錄參見 `research_logs/research_step_6_20260912_140245.log`。
+
 ---
 
 ## 5. 下一步研究計劃 (Next Research Steps)
-1. **立即步驟**: 完成 `src/research_runner.py` 之開發，實現解析 `CHECKPOINT.md` 並記錄 `research_logs/` 的核心功能。
-2. **後續步驟**: 執行腳本驗證 Checkpoint 狀態自動轉移與日誌產出。
+1. **立即步驟**: 執行 Step 7 "評估與優化自主策略生成器之長程對齊與錯誤回饋機制"，驗證多輪疊代下系統策略推演穩定度。
+2. **後續步驟**: 整合自動化測試報告與動態 Checkpoint 更新循環，實現完全封閉式的自主研究迭代。
