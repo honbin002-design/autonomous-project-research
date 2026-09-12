@@ -1,0 +1,40 @@
+name: Jules API Read-Only Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-jules-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Check Jules API connection and sources
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${JULES_API_KEY:-}" ]; then
+            echo "ERROR: JULES_API_KEY secret is missing."
+            exit 1
+          fi
+
+          HTTP_CODE=$(curl -sS \
+            -o /tmp/jules_sources.json \
+            -w "%{http_code}" \
+            -H "x-goog-api-key: ${JULES_API_KEY}" \
+            "https://jules.googleapis.com/v1alpha/sources")
+
+          echo "Jules API HTTP status: ${HTTP_CODE}"
+
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "ERROR: Jules API connection failed."
+            exit 1
+          fi
+
+          echo "PASS: Jules API connection succeeded."
+          echo "PASS: Sources endpoint is accessible."
